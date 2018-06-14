@@ -22,7 +22,7 @@ class CreateListItemsTable extends Migration
         });
 
         Schema::table('list_items', function (Blueprint $table) {
-            $table->foreign("list_label_id")->references("id")->on("list_label")->onUpdate("cascade");
+            $table->foreign("list_label_id")->references("id")->on("list_labels")->onUpdate("cascade");
         });
     }
 
