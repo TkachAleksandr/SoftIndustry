@@ -60,7 +60,6 @@
                                 </div>
                             </div>
                         </div>
-                        <hr>
                         <div class="form-group">
                             <label for="selectProject">{{ $t('translation.selectProject') }}</label>
                             <multiselect id="selectProject"
@@ -68,6 +67,8 @@
                                     :options="options">
                             </multiselect>
                         </div>
+
+                        <button type="button" class="btn btn-md btn-success float-right">{{ $t('translation.save') }}</button>
                     </div>
                 </div>
             </div>

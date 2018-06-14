@@ -50073,6 +50073,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -50396,8 +50397,6 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
             _c(
               "div",
               { staticClass: "form-group" },
@@ -50418,6 +50417,15 @@ var render = function() {
                 })
               ],
               1
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-md btn-success float-right",
+                attrs: { type: "button" }
+              },
+              [_vm._v(_vm._s(_vm.$t("translation.save")))]
             )
           ])
         ])
@@ -53105,7 +53113,8 @@ VueI18n.version = '7.8.0';
         timeManagement: 'Тайм менеджмент',
         knowledgeLanguages: 'Знание английского языка',
         selectProject: 'Выбрать проект',
-        addPhoto: 'Добавить фото'
+        addPhoto: 'Добавить фото',
+        save: 'Сохранить'
     }
 });
 
@@ -53130,7 +53139,8 @@ VueI18n.version = '7.8.0';
         timeManagement: 'Time management',
         knowledgeLanguages: 'Knowledge of languages',
         selectProject: 'Select project',
-        addPhoto: 'Add photo'
+        addPhoto: 'Add photo',
+        save: 'Save'
     }
 });
 
@@ -53189,6 +53199,8 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_NavbarTop_vue__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_NavbarTop_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_NavbarTop_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Footer_vue__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Footer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Footer_vue__);
 //
 //
 //
@@ -53196,12 +53208,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
-        NavbarTop: __WEBPACK_IMPORTED_MODULE_0__components_NavbarTop_vue___default.a
+        NavbarTop: __WEBPACK_IMPORTED_MODULE_0__components_NavbarTop_vue___default.a,
+        FooterComponent: __WEBPACK_IMPORTED_MODULE_1__components_Footer_vue___default.a
     }
 });
 
@@ -53295,7 +53310,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "nav",
-    { staticClass: "navbar navbar-expand-lg navbar-light bg-white mb-3" },
+    { staticClass: "navbar navbar-expand-lg navbar-light bg-white mb-5" },
     [
       _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
         _vm._v(_vm._s(_vm.$t("translation.logoName")))
@@ -53367,7 +53382,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("navbar-top"), _vm._v(" "), _c("router-view")], 1)
+  return _c(
+    "div",
+    [
+      _c("navbar-top"),
+      _vm._v(" "),
+      _c("router-view"),
+      _vm._v(" "),
+      _c("footer-component")
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -53770,6 +53795,73 @@ module.exports = function listToStyles (parentId, list) {
   return styles
 }
 
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(73)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Footer.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-083ff5dc", Component.options)
+  } else {
+    hotAPI.reload("data-v-083ff5dc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("footer", { staticClass: "mt-5" })
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-083ff5dc", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

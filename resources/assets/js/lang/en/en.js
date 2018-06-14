@@ -15,5 +15,6 @@ export default {
         knowledgeLanguages: 'Knowledge of languages',
         selectProject: 'Select project',
         addPhoto: 'Add photo',
+        save: 'Save',
     },
 };
