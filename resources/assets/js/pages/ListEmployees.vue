@@ -20,13 +20,17 @@
                         >
                             <template slot="characteristics" slot-scope="props">
                                 <ul>
-                                    <li v-for="item in props.rowData.characteristics">{{ item.label }} : {{ item.mark }}</li>
+                                    <li v-for="item in props.rowData.characteristics">{{ $t(`translation.${item.value}`) }} : {{ item.mark }}</li>
                                 </ul>
                             </template>
                         </vuetable>
 
-                        Total Characteristics:
-
+                        <template v-if="total && isShowTotal">
+                            {{ $t('translation.totalCharacteristics') }}
+                            <ul>
+                                <li v-for="item in total.total_characteristics">{{ $t(`translation.${item.value}`) }} : {{ Math.round(item.sum) }}</li>
+                            </ul>
+                        </template>
 
                     </div>
 
@@ -48,6 +52,7 @@
         data() {
             return {
                 searchInput: '',
+                isShowTotal: true,
                 fields: [
                     {
                         name: 'full_name',
@@ -71,8 +76,17 @@
                 ],
             };
         },
+        mounted() {
+            this.$store.dispatch('getlistEmployees');
+        },
+        computed: {
+            total() {
+                return this.$store.getters.total;
+            },
+        },
         watch: {
-            searchInput() {
+            searchInput(val) {
+                this.isShowTotal = val === '';
                 this.$nextTick(() => {
                     this.$refs.employeeList.refresh();
                 })

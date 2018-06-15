@@ -46,6 +46,7 @@ class EmployeeController extends Controller
      */
     public function store(saveNewEmployeeRequest $request)
     {
+        dd($request->all());
         $user = new User();
         $user->surname = $request->input("surname");
         $user->name = $request->input("name");
@@ -85,7 +86,6 @@ class EmployeeController extends Controller
                 $project->list_item_id = $item["id"];
                 $project->save();
             }
-
         }
 
         return response()->json($user->id,200);

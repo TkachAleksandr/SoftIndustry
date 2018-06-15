@@ -136,7 +136,7 @@
                 knowledgeLanguages: 5,
                 selectProjects: null,
                 isMultiple: false,
-                photo: null,
+                file: null,
             };
         },
         mounted() {
@@ -159,6 +159,7 @@
             userId() {
                 return this.$store.getters.userId;
             },
+
         },
         watch: {
             timeManagement(value) {
@@ -170,31 +171,36 @@
                 return option.label
             },
             filesChange(file) {
-                console.log(file);
-                this.photo = file;
-                console.log(this.photo);
+                this.file = file[0];
             },
             async saveNewEmployee() {
                 const valid = await this.$validator.validateAll();
-                console.log(valid,!Array.isArray(this.selectProjects));
                 if (valid) {
                     if (!Array.isArray(this.selectProjects) && this.selectProjects !== null) {
                         this.selectProjects = [this.selectProjects];
                     }
                     try {
-                        await this.$store.dispatch('saveNewEmployee', {
+                        console.log(this.file);
+                        await this.$store.dispatch('saveNewEmployee',
+                            objectToFormData({
+                                file: this.file,
+                            }),
+                        //     // surname: this.surname,
+                        //     // name: this.name,
+                        //     // middle_name: this.middleName,
+                        //     // sociability: this.sociability,
+                        //     // engineering_skills: this.engineeringSkills,
+                        //     // time_management: this.timeManagement,
+                        //     // knowledge_languages: this.knowledgeLanguages,
+                        //     // projects: this.selectProjects,
+                        //
+                        );
+                        // await this.$store.dispatch('saveNewEmployee', {
                             // data: objectToFormData({
-                            //     file: this.photo,
-                                surname: this.surname,
-                                name: this.name,
-                                middle_name: this.middleName,
-                                sociability: this.sociability,
-                                engineering_skills: this.engineeringSkills,
-                                time_management: this.timeManagement,
-                                knowledge_languages: this.knowledgeLanguages,
-                                projects: this.selectProjects,
+                            //     file: this.file,
                             // }),
-                        });
+                            // formData,
+                        // });
                         this.$toasted.success(this.$t('translation.success'));
                         this.clearFields();
                     } catch (e) {
@@ -213,6 +219,7 @@
                 this.timeManagement = 5;
                 this.knowledgeLanguages = 5;
                 this.selectProjects = null;
+                this.file = null;
                 this.$validator.reset();
             },
         },

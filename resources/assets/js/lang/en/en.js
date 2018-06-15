@@ -21,5 +21,6 @@ export default {
         fullName: 'Full name',
         characteristics: 'Characteristics',
         amountProjects: 'Amount projects',
+        totalCharacteristics: 'The average value of the characteristics of all employees:',
     },
 };

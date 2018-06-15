@@ -24,13 +24,13 @@ class saveNewEmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            "surname" => "required",
-            "name" => "required",
-            "middle_name" => "required",
-            "sociability" => "required|min:1|max:10",
-            "engineering_skills" => "required|min:1|max:10",
-            "time_management" => "required|min:1|max:10",
-            "knowledge_languages" => "required|min:1|max:10",
+//            "surname" => "required",
+//            "name" => "required",
+//            "middle_name" => "required",
+//            "sociability" => "required|min:1|max:10",
+//            "engineering_skills" => "required|min:1|max:10",
+//            "time_management" => "required|min:1|max:10",
+//            "knowledge_languages" => "required|min:1|max:10",
         ];
     }
 }

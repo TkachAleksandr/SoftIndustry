@@ -1,7 +1,7 @@
 import * as types from './mutation-types';
 
 export default {
-    [types.USER_ID](state, payload) {
-        state.userId = payload;
+    [types.TOTAL](state, payload) {
+        state.total = payload;
     },
 };

@@ -21,5 +21,6 @@ export default {
         fullName: 'ФИО',
         characteristics: 'Характеристики',
         amountProjects: 'Количество проектов',
+        totalCharacteristics: 'Среднее значение характеристик всех сотрудников:',
     },
 };
