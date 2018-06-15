@@ -8,6 +8,7 @@ use App\User;
 use App\UserCharacteristics;
 use App\UserProject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
 {
@@ -46,10 +47,22 @@ class EmployeeController extends Controller
      */
     public function store(saveNewEmployeeRequest $request)
     {
-        dd($request->all());
+        $path = null;
+        if ($request->has("file")) {
+            $file = $request->file('file');
+            if (!is_null($file)) {
+                $name_unique = uniqid() . '.' . $file->getClientOriginalExtension();
+                $path = $file->storeAs(Constants::PATH_FILES, $name_unique);
+                $path = storage_path($path);
+//                $path = Storage::url($path);
+//                dd($path);
+            }
+        }
+
         $user = new User();
         $user->surname = $request->input("surname");
         $user->name = $request->input("name");
+        $user->photo_path = $path;
         $user->middle_name = $request->input("middle_name");
         $user->save();
 
@@ -79,12 +92,14 @@ class EmployeeController extends Controller
 
         $project = $request->input("projects");
 
-        if (!is_null($project)) {
+        if ($project !== "null") {
             foreach ($project as $item) {
-                $project = new UserProject();
-                $project->user_id = $user->id;
-                $project->list_item_id = $item["id"];
-                $project->save();
+                if (isset($item["id"])) {
+                    $project = new UserProject();
+                    $project->user_id = $user->id;
+                    $project->list_item_id = $item["id"];
+                    $project->save();
+                }
             }
         }
 

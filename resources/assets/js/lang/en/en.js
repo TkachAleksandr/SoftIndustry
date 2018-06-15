@@ -22,5 +22,6 @@ export default {
         characteristics: 'Characteristics',
         amountProjects: 'Amount projects',
         totalCharacteristics: 'The average value of the characteristics of all employees:',
+        successAddEmployee: 'Success added employee',
     },
 };

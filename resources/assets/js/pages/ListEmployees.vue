@@ -18,6 +18,10 @@
                                   data-path="data"
                                   :append-params = "{ searchInput }"
                         >
+                            <template slot="photo" slot-scope="props">
+                                <img :src="props.rowData.photo_path" class="img-thumbnail">
+                                <!--<img src=<?php echo asset("storage/$myTheory->image")?> class="img-thumbnail">-->
+                            </template>
                             <template slot="characteristics" slot-scope="props">
                                 <ul>
                                     <li v-for="item in props.rowData.characteristics">{{ $t(`translation.${item.value}`) }} : {{ item.mark }}</li>
@@ -54,6 +58,11 @@
                 searchInput: '',
                 isShowTotal: true,
                 fields: [
+                    {
+                        name: '__slot:photo',
+                        titleClass: 'text-left',
+                        dataClass: 'text-left',
+                    },
                     {
                         name: 'full_name',
                         title: this.$t('translation.fullName'),

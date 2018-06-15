@@ -15,4 +15,6 @@ class Constants {
     const ID_LIST_ITEM_ENGINEERING_SKILLS = 2;
     const ID_LIST_ITEM_TIME_MANAGEMENT = 3;
     const ID_LIST_ITEM_KNOWLEDGE_LANGUAGES = 4;
+
+    const PATH_FILES = '/public/images';
 }

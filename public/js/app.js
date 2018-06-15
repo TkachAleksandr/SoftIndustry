@@ -51880,30 +51880,22 @@ var objectToFormData = __webpack_require__(98);
                                 }
                                 _context.prev = 5;
 
-                                console.log(this.file);
+                                console.log(this.file, this.selectProjects);
                                 _context.next = 9;
                                 return this.$store.dispatch('saveNewEmployee', objectToFormData({
-                                    file: this.file
-                                })
-                                //     // surname: this.surname,
-                                //     // name: this.name,
-                                //     // middle_name: this.middleName,
-                                //     // sociability: this.sociability,
-                                //     // engineering_skills: this.engineeringSkills,
-                                //     // time_management: this.timeManagement,
-                                //     // knowledge_languages: this.knowledgeLanguages,
-                                //     // projects: this.selectProjects,
-                                //
-                                );
+                                    file: this.file,
+                                    surname: this.surname,
+                                    name: this.name,
+                                    middle_name: this.middleName,
+                                    sociability: this.sociability,
+                                    engineering_skills: this.engineeringSkills,
+                                    time_management: this.timeManagement,
+                                    knowledge_languages: this.knowledgeLanguages,
+                                    projects: this.selectProjects
+                                }));
 
                             case 9:
-                                // await this.$store.dispatch('saveNewEmployee', {
-                                // data: objectToFormData({
-                                //     file: this.file,
-                                // }),
-                                // formData,
-                                // });
-                                this.$toasted.success(this.$t('translation.success'));
+                                this.$toasted.success(this.$t('translation.successAddEmployee'));
                                 this.clearFields();
                                 _context.next = 16;
                                 break;
@@ -53486,6 +53478,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -53500,6 +53496,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             searchInput: '',
             isShowTotal: true,
             fields: [{
+                name: '__slot:photo',
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
                 name: 'full_name',
                 title: this.$t('translation.fullName'),
                 sortField: 'full_name',
@@ -57441,6 +57441,17 @@ var render = function() {
                 },
                 scopedSlots: _vm._u([
                   {
+                    key: "photo",
+                    fn: function(props) {
+                      return [
+                        _c("img", {
+                          staticClass: "img-thumbnail",
+                          attrs: { src: props.rowData.photo_path }
+                        })
+                      ]
+                    }
+                  },
+                  {
                     key: "characteristics",
                     fn: function(props) {
                       return [
@@ -58651,17 +58662,16 @@ var saveNewEmployee = function () {
                         json = _context.sent;
 
                         if (!(json.status === 200)) {
-                            _context.next = 6;
+                            _context.next = 5;
                             break;
                         }
 
-                        commit(__WEBPACK_IMPORTED_MODULE_2__mutation_types__["USER_ID"], json.data);
                         return _context.abrupt('return', json);
 
-                    case 6:
+                    case 5:
                         throw json;
 
-                    case 7:
+                    case 6:
                     case 'end':
                         return _context.stop();
                 }
@@ -58793,9 +58803,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    userId: function userId(state) {
-        return state.userId;
-    },
     total: function total(state) {
         return state.total;
     }
@@ -58821,7 +58828,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    userId: null,
     total: null
 });
 
@@ -60641,7 +60647,8 @@ VueI18n.version = '7.8.0';
         fullName: 'ФИО',
         characteristics: 'Характеристики',
         amountProjects: 'Количество проектов',
-        totalCharacteristics: 'Среднее значение характеристик всех сотрудников:'
+        totalCharacteristics: 'Среднее значение характеристик всех сотрудников:',
+        successAddEmployee: 'Сотрудник успешно добавлен'
     }
 });
 
@@ -60673,7 +60680,8 @@ VueI18n.version = '7.8.0';
         fullName: 'Full name',
         characteristics: 'Characteristics',
         amountProjects: 'Amount projects',
-        totalCharacteristics: 'The average value of the characteristics of all employees:'
+        totalCharacteristics: 'The average value of the characteristics of all employees:',
+        successAddEmployee: 'Success added employee'
     }
 });
 

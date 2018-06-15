@@ -152,14 +152,13 @@
                             label: el.label,
                             id: el.id
                         });
-                    })
+                    });
                 }
                 return arr;
             },
             userId() {
                 return this.$store.getters.userId;
             },
-
         },
         watch: {
             timeManagement(value) {
@@ -180,28 +179,21 @@
                         this.selectProjects = [this.selectProjects];
                     }
                     try {
-                        console.log(this.file);
+                        console.log(this.file, this.selectProjects);
                         await this.$store.dispatch('saveNewEmployee',
                             objectToFormData({
                                 file: this.file,
+                                surname: this.surname,
+                                name: this.name,
+                                middle_name: this.middleName,
+                                sociability: this.sociability,
+                                engineering_skills: this.engineeringSkills,
+                                time_management: this.timeManagement,
+                                knowledge_languages: this.knowledgeLanguages,
+                                projects: this.selectProjects,
                             }),
-                        //     // surname: this.surname,
-                        //     // name: this.name,
-                        //     // middle_name: this.middleName,
-                        //     // sociability: this.sociability,
-                        //     // engineering_skills: this.engineeringSkills,
-                        //     // time_management: this.timeManagement,
-                        //     // knowledge_languages: this.knowledgeLanguages,
-                        //     // projects: this.selectProjects,
-                        //
                         );
-                        // await this.$store.dispatch('saveNewEmployee', {
-                            // data: objectToFormData({
-                            //     file: this.file,
-                            // }),
-                            // formData,
-                        // });
-                        this.$toasted.success(this.$t('translation.success'));
+                        this.$toasted.success(this.$t('translation.successAddEmployee'));
                         this.clearFields();
                     } catch (e) {
                         this.$toasted.error(this.$t('translation.error'));

@@ -5,7 +5,6 @@ export const saveNewEmployee = async ({ commit }, payload) => {
     const json = await home.saveNewEmployee(payload);
 
     if (json.status === 200) {
-        commit(types.USER_ID, json.data);
         return json;
     }
 

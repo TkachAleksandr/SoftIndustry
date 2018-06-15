@@ -22,5 +22,6 @@ export default {
         characteristics: 'Характеристики',
         amountProjects: 'Количество проектов',
         totalCharacteristics: 'Среднее значение характеристик всех сотрудников:',
+        successAddEmployee: 'Сотрудник успешно добавлен',
     },
 };
