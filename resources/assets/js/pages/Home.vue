@@ -42,7 +42,7 @@
                                 <label for="photo"> {{ $t('translation.addPhoto') }} </label>
                                 <input type="file" name="photo" id="photo" class="form-control"
                                        accept="image/*"
-                                       @change="photoChange($event.target.files)">
+                                       @change="filesChange($event.target.files)">
                             </div>
                         </div>
                         <div class="mb-5">
@@ -119,6 +119,8 @@
 <script>
     import Multiselect from 'vue-multiselect';
 
+    const objectToFormData = require('object-to-formdata');
+
     export default {
         components: {
             Multiselect,
@@ -134,6 +136,7 @@
                 knowledgeLanguages: 5,
                 selectProjects: null,
                 isMultiple: false,
+                photo: null,
             };
         },
         mounted() {
@@ -153,6 +156,9 @@
                 }
                 return arr;
             },
+            userId() {
+                return this.$store.getters.userId;
+            },
         },
         watch: {
             timeManagement(value) {
@@ -163,26 +169,31 @@
             customLabel(option) {
                 return option.label
             },
-            photoChange(file) {
-                this.file = file[0];
+            filesChange(file) {
+                console.log(file);
+                this.photo = file;
+                console.log(this.photo);
             },
             async saveNewEmployee() {
                 const valid = await this.$validator.validateAll();
                 console.log(valid,!Array.isArray(this.selectProjects));
                 if (valid) {
-                    if (!Array.isArray(this.selectProjects)) {
+                    if (!Array.isArray(this.selectProjects) && this.selectProjects !== null) {
                         this.selectProjects = [this.selectProjects];
                     }
                     try {
                         await this.$store.dispatch('saveNewEmployee', {
-                            surname: this.surname,
-                            name: this.name,
-                            middle_name: this.middleName,
-                            sociability: this.sociability,
-                            engineering_skills: this.engineeringSkills,
-                            time_management: this.timeManagement,
-                            knowledge_languages: this.knowledgeLanguages,
-                            projects: this.selectProjects,
+                            // data: objectToFormData({
+                            //     file: this.photo,
+                                surname: this.surname,
+                                name: this.name,
+                                middle_name: this.middleName,
+                                sociability: this.sociability,
+                                engineering_skills: this.engineeringSkills,
+                                time_management: this.timeManagement,
+                                knowledge_languages: this.knowledgeLanguages,
+                                projects: this.selectProjects,
+                            // }),
                         });
                         this.$toasted.success(this.$t('translation.success'));
                         this.clearFields();

@@ -71,7 +71,7 @@ class EmployeeController extends Controller
 
         }
 
-        return response()->json([],200);
+        return response()->json($user->id,200);
     }
 
     /**

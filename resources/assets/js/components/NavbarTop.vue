@@ -7,21 +7,13 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">{{ $t('translation.createEmployee') }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">{{ $t('translation.listEmployees') }}</a>
-                </li>
+                <router-link tag="li" :to="{ name: 'home' }" class="nav-link">
+                    {{ $t('translation.createEmployee') }}
+                </router-link>
+                <router-link tag="li" :to="{ name: 'list.employees' }" class="nav-link">
+                    {{ $t('translation.listEmployees') }}
+                </router-link>
             </ul>
         </div>
     </nav>
 </template>
-
-<script>
-    export default {
-        mounted() {
-            console.log('Component mounted NavbarTop');
-        },
-    };
-</script>
