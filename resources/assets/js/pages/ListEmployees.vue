@@ -19,8 +19,7 @@
                                   :append-params = "{ searchInput }"
                         >
                             <template slot="photo" slot-scope="props">
-                                <img :src="props.rowData.photo_path" class="img-thumbnail">
-                                <!--<img src=<?php echo asset("storage/$myTheory->image")?> class="img-thumbnail">-->
+                                <img :src="props.rowData.photo_path  === null ? '/1.jpg' : props.rowData.photo_path" class="img-thumbnail" style="height: 100px">
                             </template>
                             <template slot="characteristics" slot-scope="props">
                                 <ul>

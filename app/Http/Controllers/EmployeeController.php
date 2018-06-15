@@ -54,8 +54,6 @@ class EmployeeController extends Controller
                 $name_unique = uniqid() . '.' . $file->getClientOriginalExtension();
                 $path = $file->storeAs(Constants::PATH_FILES, $name_unique);
                 $path = storage_path($path);
-//                $path = Storage::url($path);
-//                dd($path);
             }
         }
 

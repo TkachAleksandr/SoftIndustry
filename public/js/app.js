@@ -53481,7 +53481,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -57446,7 +57445,13 @@ var render = function() {
                       return [
                         _c("img", {
                           staticClass: "img-thumbnail",
-                          attrs: { src: props.rowData.photo_path }
+                          staticStyle: { height: "100px" },
+                          attrs: {
+                            src:
+                              props.rowData.photo_path === null
+                                ? "/1.jpg"
+                                : props.rowData.photo_path
+                          }
                         })
                       ]
                     }
