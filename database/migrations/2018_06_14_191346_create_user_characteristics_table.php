@@ -17,6 +17,7 @@ class CreateUserCharacteristicsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('list_items_id')->unsigned();
+            $table->integer('mark');
             $table->timestamps();
         });
 
