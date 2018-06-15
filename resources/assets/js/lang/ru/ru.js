@@ -18,5 +18,8 @@ export default {
         addPhoto: 'Добавить фото',
         save: 'Сохранить',
         notValidForm: ' Форма заполнена неверно',
+        fullName: 'ФИО',
+        characteristics: 'Характеристики',
+        amountProjects: 'Количество проектов',
     },
 };

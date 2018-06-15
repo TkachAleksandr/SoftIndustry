@@ -18,5 +18,8 @@ export default {
         addPhoto: 'Add photo',
         save: 'Save',
         noValidForm: 'Form is filled in incorrectly',
+        fullName: 'Full name',
+        characteristics: 'Characteristics',
+        amountProjects: 'Amount projects',
     },
 };

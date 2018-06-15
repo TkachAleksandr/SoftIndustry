@@ -18,7 +18,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            "data" => User::with(["characteristics"])->get(),
+        ], 200);
     }
 
     /**
