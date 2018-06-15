@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 import Home from '../pages/Home.vue';
 import ListEmployees from '../pages/ListEmployees.vue';
+import NotFound from '../pages/NotFound.vue';
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,10 @@ const routes = [
         path: '/list/employees',
         name: 'list.employees',
         component: ListEmployees,
+    },
+    {
+        path: '*',
+        component: NotFound,
     },
 ];
 
