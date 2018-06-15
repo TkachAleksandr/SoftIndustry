@@ -3,24 +3,31 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card card-default">
-                    <div class="card-header">{{ $t('translation.listEmployees') }}</div>
-                    <div>
+                    <div class="card-header">
+                        {{ $t('translation.listEmployees') }}
+                        <span class="float-right">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                   v-model.trim="searchInput">
+                        </span>
+                    </div>
+                    <div class="card-body">
                         <vuetable ref="employeeList"
                                   api-url="/api/employee"
                                   :fields="fields"
                                   pagination-path=""
                                   data-path="data"
+                                  :append-params = "{ searchInput }"
                         >
                             <template slot="characteristics" slot-scope="props">
-                                <ul v-for="item in props.rowData.characteristics">
-                                    <li>{{ item.label }} : {{ item.mark }}</li>
+                                <ul>
+                                    <li v-for="item in props.rowData.characteristics">{{ item.label }} : {{ item.mark }}</li>
                                 </ul>
-                                <!--<button type="button" class="btn btn-md" :title="$t('translation.remove')"-->
-                                        <!--@click="removeUser(props.rowData.id)">-->
-                                    <!--<i class="fa fa-trash-o"></i>-->
-                                <!--</button>-->
                             </template>
                         </vuetable>
+
+                        Total Characteristics:
+
+
                     </div>
 
                 </div>
@@ -31,13 +38,16 @@
 
 <script>
     import Vuetable from 'vuetable-2/src/components/Vuetable.vue';
+    import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo';
 
     export default {
         components: {
             Vuetable,
+            VuetablePaginationInfo,
         },
         data() {
             return {
+                searchInput: '',
                 fields: [
                     {
                         name: 'full_name',
@@ -55,11 +65,23 @@
                     {
                         name: 'amount_projects',
                         title: this.$t('translation.amountProjects'),
-                        titleClass: 'text-left',
-                        dataClass: 'text-left',
+                        titleClass: 'text-center',
+                        dataClass: 'text-center',
                     },
                 ],
             };
         },
+        watch: {
+            searchInput() {
+                this.$nextTick(() => {
+                    this.$refs.employeeList.refresh();
+                })
+            },
+        },
+        methods: {
+            onPaginationData (paginationData) {
+                this.$refs.paginationInfo.setPaginationData(paginationData);
+            },
+        }
     };
 </script>

@@ -16,10 +16,25 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search_input = $request->input("searchInput");
+        if (!is_null($search_input)) {
+            $users = User::with(["characteristics"])
+                ->orWhere('surname', 'LIKE', '%'.$search_input.'%')
+                ->orWhere('name', 'LIKE', '%'.$search_input.'%')
+                ->orWhere('middle_name', 'LIKE', '%'.$search_input.'%')
+                ->get();
+        } else {
+            $users = User::with(["characteristics"])->get();
+        }
+
+        $total_characteristics = UserCharacteristics::groupBy("list_item_id")
+            ->selectRaw("SUM(mark) /". $users->count() ." as sum, list_item_id")->get();
+
         return response()->json([
-            "data" => User::with(["characteristics"])->get(),
+            "data" => $users,
+            "total_characteristics" => $total_characteristics,
         ], 200);
     }
 
@@ -74,39 +89,5 @@ class EmployeeController extends Controller
         }
 
         return response()->json($user->id,200);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
