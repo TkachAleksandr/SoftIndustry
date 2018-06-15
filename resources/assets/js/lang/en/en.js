@@ -2,6 +2,7 @@ export default {
     translation: {
         ru: 'Русский',
         en: 'English',
+        star: '*',
         logoName: 'SoftIndustry',
         createEmployee: 'Create employee',
         listEmployees: 'List employees',
@@ -16,5 +17,6 @@ export default {
         selectProject: 'Select project',
         addPhoto: 'Add photo',
         save: 'Save',
+        noValidForm: 'Form is filled in incorrectly',
     },
 };

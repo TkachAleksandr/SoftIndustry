@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class UserCharacteristics extends Model
 {
     protected $fillable = [
-       "user_id",
-       "list_items_id",
+        "user_id",
+        "list_item_id",
+        "mark",
     ];
 }

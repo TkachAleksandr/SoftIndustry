@@ -10,4 +10,8 @@ class ListLabel extends Model
         "value",
         "label",
     ];
+
+    public function list_items() {
+        return $this->hasMany("App\ListItem");
+    }
 }

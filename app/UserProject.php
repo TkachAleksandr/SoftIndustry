@@ -8,6 +8,6 @@ class UserProject extends Model
 {
     protected $fillable = [
         "user_id",
-        "list_items_id",
+        "list_item_id",
     ];
 }
