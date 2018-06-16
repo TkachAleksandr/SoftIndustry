@@ -51811,13 +51811,13 @@ var objectToFormData = __webpack_require__(98);
     },
     data: function data() {
         return {
-            surname: 'e',
-            name: 'e',
-            middleName: 'e',
-            sociability: 5,
-            engineeringSkills: 5,
-            timeManagement: 5,
-            knowledgeLanguages: 5,
+            surname: '',
+            name: '',
+            middleName: '',
+            sociability: 1,
+            engineeringSkills: 1,
+            timeManagement: 1,
+            knowledgeLanguages: 1,
             selectProjects: null,
             isMultiple: false,
             file: null
